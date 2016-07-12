@@ -212,7 +212,7 @@ module WillPaginate
                 WHERE rownum <= #{pager.offset + pager.per_page}
               ) WHERE rnum >= #{pager.offset}
             SQL
-          elsif adapter == "SQLServer"
+          elsif adapter == "SQLServer" or adapter == "MSSQL"
             options_limit = pager.per_page ? "TOP #{pager.per_page}" : ""  
             options[:order] ||= if order_by = query.match(/ORDER BY(.*$)/i)  
                                   order_by[1]  
